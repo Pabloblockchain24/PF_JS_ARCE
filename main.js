@@ -141,6 +141,13 @@ function eliminarElemento(id) {
   })
 }
 
+// Creo evento que disparara cuando le doy click al input buscar
+let formBuscar = document.getElementById("formBuscar");
+formBuscar.addEventListener("submit", function(event) {
+  event.preventDefault();
+  buscarProducto();
+});
+
 // Creo funcion que se activa cuando le doy click al input buscar
 function buscarProducto() {
   let palabraABuscar = document.querySelector("#buscarInput").value.toUpperCase();
@@ -158,12 +165,7 @@ function buscarProducto() {
   document.querySelector("#buscarInput").value = "";
 }
 
-// Creo evento que disparara cuando le doy click al input buscar
-let formBuscar = document.getElementById("formBuscar");
-formBuscar.addEventListener("submit", function (event) {
-  event.preventDefault();
-  buscarProducto();
-});
+
 
 // Creo funcion que hace que el inventario se muestre en una tabla ocupando el DOM
 function mostrarTablaInventario() {
@@ -246,6 +248,10 @@ async function editarElemento(indexEnInventario) {
 
 // Creo funcion que identifica la pagina html en la que estamos posicionados y filtra el inventario segun la pagina.
 let paginaHtml = window.location.pathname.split('/').pop();
+if (paginaHtml != "index.html"){
+  buscar = document.getElementById("containerBuscar")
+  buscar.style.display = "none";
+}
 switch (paginaHtml) {
   case "hombre.html":
     const Hombres = inventario.filter(elemento => elemento.categoria.toUpperCase() === "HOMBRE")
@@ -254,7 +260,6 @@ switch (paginaHtml) {
       elemento.imagen = nuevaruta
     });
     mostrarProductos(Hombres);
-    mostrarTablaInventario
     break;
   case "mujer.html":
     const Mujeres = inventario.filter(elemento => elemento.categoria.toUpperCase() === "MUJER")
