@@ -51,7 +51,7 @@ function mostrarProductos(dataProductos) {
     const producto = document.createElement("div")
     producto.innerHTML =
       `<div class="productos__card">
-        <img src= ../${elemento.imagen} class="productos__card__image" alt="${elemento.nombre}">
+        <img src=${elemento.imagen} class="productos__card__image" alt="${elemento.nombre}">
         <div class="productos__card__descripcion">
             <div class="productos__card__descripcion__brand"> ID: ${elemento.id}</div>
             <div class="productos__card__descripcion__brand"> ${elemento.marca}</div>
