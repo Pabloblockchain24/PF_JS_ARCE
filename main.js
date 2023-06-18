@@ -248,15 +248,27 @@ let paginaHtml = window.location.pathname.split('/').pop();
 switch (paginaHtml) {
   case "hombre.html":
     const Hombres = inventario.filter(elemento => elemento.categoria.toUpperCase() === "HOMBRE")
+    Hombres.forEach(elemento =>{
+      nuevaruta= "." + elemento.imagen
+      elemento.imagen = nuevaruta
+    });
     mostrarProductos(Hombres);
     mostrarTablaInventario
     break;
   case "mujer.html":
     const Mujeres = inventario.filter(elemento => elemento.categoria.toUpperCase() === "MUJER")
+    Mujeres.forEach(elemento =>{
+      nuevaruta= "." + elemento.imagen
+      elemento.imagen = nuevaruta
+    });
     mostrarProductos(Mujeres);
     break;
   case "accesorios.html":
     const Accesorios = inventario.filter(elemento => elemento.categoria.toUpperCase() === "ACCESORIO")
+    Accesorios.forEach(elemento =>{
+      nuevaruta= "." + elemento.imagen
+      elemento.imagen = nuevaruta
+    });
     mostrarProductos(Accesorios);
     break;
 }
