@@ -144,6 +144,7 @@ function eliminarElemento(id) {
 // Creo funcion que se activa cuando le doy click al input buscar
 function buscarProducto() {
   let palabraABuscar = document.querySelector("#buscarInput").value.toUpperCase();
+  console.log(palabraABuscar)
   let arrayFiltrado = inventario.filter((producto) => producto.nombre.toUpperCase().includes(palabraABuscar));
   if (arrayFiltrado.length > 0) {
     mostrarProductos(arrayFiltrado);
