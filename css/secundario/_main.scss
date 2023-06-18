@@ -1,0 +1,13 @@
+.main{
+    background-color: rgb(202, 202, 202);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 5%;
+}
+
+    

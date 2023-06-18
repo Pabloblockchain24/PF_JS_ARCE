@@ -1,0 +1,19 @@
+[
+    {"id": 1, "nombre": "Chaqueta calvin klein hombre", "marca":"Calvin Klein", "categoria": "Hombre", "imagen": "../img/chaquetaCalvinHombre.jpg", "precio":85000},
+    {"id": 2, "nombre": "Chaqueta calvin klein mujer", "marca":"Calvin Klein", "categoria": "Mujer", "imagen": "../img/chaquetaCalvinMujer.jpg", "precio":80000},
+    {"id": 3, "nombre": "Chaqueta The North Face hombre", "marca":"The north face", "categoria": "Hombre", "imagen": "../img/chaquetaTNF.jpg", "precio":150000},
+    {"id": 4, "nombre": "Chaqueta Tommy Hilfiger Mujer", "marca":"Tommy Hilfiger", "categoria": "Mujer", "imagen": "../img/chaquetaTommy.jpg", "precio":100000},
+    {"id": 5, "nombre": "Cinturon hombre Ellus", "marca":"Ellus", "categoria": "Accesorio", "imagen": "../img/cinturon1.jpg", "precio":25000},
+    {"id": 6, "nombre": "Cinturon hombre OVO", "marca":"OVO", "categoria": "Accesorio", "imagen": "../img/cinturon2.jpg", "precio":50000},
+    {"id": 7, "nombre": "Jockey new era hombre", "marca":"New Era", "categoria": "Accesorio", "imagen": "../img/jockey1.jpg", "precio":30000},
+    {"id": 8, "nombre": "Jockey new era mujer", "marca":"New Era", "categoria": "Accesorio", "imagen": "../img/jockey2.jpg", "precio":25000},
+    {"id": 9, "nombre": "Polera calvin klein hombre", "marca":"Calvin Klein", "categoria": "Hombre", "imagen": "../img/poleraCalvinKlein.jpg", "precio":35000},
+    {"id": 10, "nombre": "Polera calvin klein mujer", "marca":"Calvin Klein", "categoria": "Mujer", "imagen": "../img/poleraCalvinMujer.jpg", "precio":35000},
+    {"id": 11, "nombre": "Polera gap hombre", "marca":"Gap", "categoria": "Hombre", "imagen": "../img/poleraGap.jpg", "precio":18000},
+    {"id": 12, "nombre": "Polera Tommy Hilfiger mujer", "marca":"Tommy Hilfiger", "categoria": "Mujer", "imagen": "../img/poleraTommyMujer.jpg", "precio":35000},
+    {"id": 13, "nombre": "Poleron Calvin klein mujer", "marca":"Calvin Klein", "categoria": "Mujer", "imagen": "../img/poleronCalvin.jpg", "precio":60000},
+    {"id": 14, "nombre": "Poleron Gap Hombre", "marca":"Gap", "categoria": "Hombre", "imagen": "../img/poleronGapHombre.jpg", "precio":40000},
+    {"id": 15, "nombre": "Reloj Hombre verde", "marca":"Sin marca", "categoria": "Accesorio", "imagen": "../img/reloj1.jpg", "precio":200000},
+    {"id": 16, "nombre": "Reloj Hombre azul invicta", "marca":"Invicta", "categoria": "Accesorio", "imagen": "../img/reloj2.jpg", "precio":140000},
+    {"id": 17, "nombre": "Poleron Tommy Hilfiger azul", "marca":"Tommy Hilfiger", "categoria": "Hombre", "imagen": "../img/poleronTommy.jpg", "precio":60000}
+]

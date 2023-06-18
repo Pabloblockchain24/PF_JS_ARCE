@@ -1,0 +1,54 @@
+/*creo grid para la page servicios tamaño desktop*/
+.productos {
+    &__card {
+        background-color: white;
+        width: 90%;
+        margin-bottom: 10%;
+        text-align: start;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        &__descripcion {
+            padding-inline: 4%;
+
+            &__brand {
+                color: grey;
+                margin-bottom: 4%;
+            }
+
+            &__name {
+                font-size: 100%;
+                font-weight: bolder;
+                font-family: sans-serif;
+                line-height: 120%;
+                color: rgb(61, 61, 61);
+            }
+
+            &__price {
+                font-size: 120%;
+                color: grey
+            }
+
+            /*le doy formatos a imagenes de las card de los servicios*/
+        }
+        &__image {
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+.button_delete_edit{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button_size{
+    background-color: rgb(197, 197, 197);
+    border-radius: 5px;
+    padding: 5%;
+    margin: 5%;
+
+}

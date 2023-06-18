@@ -1,0 +1,15 @@
+.aside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 20px;
+    padding: 20%;
+}
+
+.formularioEnColumna{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}

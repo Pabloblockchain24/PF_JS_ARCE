@@ -1,0 +1,16 @@
+/* Inicializo reseteando los valores predeterminados*/
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+$secondaryColor: white;
+
+.btn{
+    padding: 1%;
+}
+.encabezado{
+    text-align: center;
+    margin: 2%;
+}
