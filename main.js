@@ -21,7 +21,7 @@ function cargarJSONoLocalStorage() {
     id = idGuardado;
     mostrarProductos(inventario);
   } else {
-    const archivojson = "/json/productos.json";
+    const archivojson = "./json/productos.json";
     fetch(archivojson)
       .then((resp) => resp.json())
       .then((data) => {
