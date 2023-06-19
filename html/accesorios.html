@@ -62,16 +62,18 @@
 
   <!-- Creo el main, que tendra un aside donde iran los botones y la grilla con los productos o la table del inventario-->
   <main class="main">
-    <aside class="aside">
+    <aside class="aside" >
       <!-- Creo boton que cuando se apriete, se despliegan campos del menu agregar -->
-      <button type="submit" class="btn btn-primary" onclick="desplegarAgregar()">AGREGAR PRODUCTO</button>
-      <form id="menuAgregar" style="display: none;">
-        <input type="text" id="nombre" placeholder="NOMBRE">
-        <input type="text" id="marca" placeholder="MARCA">
-        <input type="text" id="categoria" placeholder="CATEGORIA">
-        <input type="number" id="precio" placeholder="PRECIO">
-        <button type="submit">AGREGAR PRODUCTO</button>
-      </form>
+      <div id="agregar">
+        <button type="submit" class="btn btn-primary" onclick="desplegarAgregar()">AGREGAR PRODUCTO</button>
+        <form id="menuAgregar" style="display: none;">
+          <input type="text" id="nombre" placeholder="NOMBRE">
+          <input type="text" id="marca" placeholder="MARCA">
+          <input type="text" id="categoria" placeholder="CATEGORIA">
+          <input type="number" id="precio" placeholder="PRECIO">
+          <button type="submit">AGREGAR PRODUCTO</button>
+        </form>
+      </div>
     </aside>
 
     <!-- Creo div que tiene titulo de la seccion y los div producto y table que son manejados desde main.js  -->

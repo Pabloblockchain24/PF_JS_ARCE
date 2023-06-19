@@ -58,8 +58,8 @@ function mostrarProductos(dataProductos) {
             <p class="productos__card__descripcion__name"> ${elemento.nombre}</p>
             <p class="productos__card__descripcion__price"> $ ${elemento.precio} </p>
             <div class="button_delete_edit">
-            <button onclick="eliminarElemento(${elemento.id})" class="button_size"> <i class="bi bi-trash-fill"> </i> </button>
-            <button onclick="editarElemento(${inventario.indexOf(elemento)})" class="button_size"> <i class="bi bi-pencil-fill"></i>  </button>
+            <button id="boton" onclick="eliminarElemento(${elemento.id})" class="button_size"> <i class="bi bi-trash-fill"> </i> </button>
+            <button id="boton" onclick="editarElemento(${inventario.indexOf(elemento)})" class="button_size"> <i class="bi bi-pencil-fill"></i>  </button>
             </div>
         </div>
         </div>`
@@ -151,7 +151,6 @@ formBuscar.addEventListener("submit", function(event) {
 // Creo funcion que se activa cuando le doy click al input buscar
 function buscarProducto() {
   let palabraABuscar = document.querySelector("#buscarInput").value.toUpperCase();
-  console.log(palabraABuscar)
   let arrayFiltrado = inventario.filter((producto) => producto.nombre.toUpperCase().includes(palabraABuscar));
   if (arrayFiltrado.length > 0) {
     mostrarProductos(arrayFiltrado);
@@ -206,51 +205,46 @@ function mostrarTablaInventario() {
 }
 
 
-// Creo funcion que se dispara cuando le doy click al boton editarElemento de las tarjeta de html
-async function editarElemento(indexEnInventario) {
-  let productoEditado = {}
-  await Swal.fire({
-    title: 'Editor productos',
+/* Creo funcion que se dispara cuando le doy click al boton editarElemento de las tarjeta de html
+con un swalfire disparo un formulario que guardara sus valores en un formValues y con estos creo un objeto
+y lo reemplazo en la posicion del elemento al cual se le clickeo el boton editar
+*/
+async function editarElemento(idInventario) {
+  const { value: formValues } = await Swal.fire({
+    title: 'EDITAR DATOS',
     html:
-      '<label> Nombre: </label> <input id="swal-input1" class="swal2-input">' +
-      '<label> Marca: </label> <input id="swal-input2" class="swal2-input">' +
-      '<label> Categoria: </label> <input id="swal-input3" class="swal2-input">' +
-      '<label> Precio: </label> <input id="swal-input4" class="swal2-input">',
+    '<label> Nombre: </label> <input id="swal-input1" class="swal2-input">' +
+    '<label> Marca: </label> <input id="swal-input2" class="swal2-input">' +
+    '<label> Categoria: </label> <input id="swal-input3" class="swal2-input">' +
+    '<label> Precio: </label> <input id="swal-input4" class="swal2-input">',
     focusConfirm: false,
     preConfirm: () => {
-      let id = inventario[indexEnInventario].id
-      let nombreEditado = document.getElementById('swal-input1').value;
-      console.log(nombreEditado)
-      let marcaEditado = document.getElementById('swal-input2').value;
-      console.log(marcaEditado)
-      let categoriaEditado = document.getElementById('swal-input3').value;
-      let precioEditado = Number(document.getElementById('swal-input4').value);
-      let imagen = inventario[indexEnInventario].imagen;
-      if (isNaN(precioEditado) || nombreEditado == "" || marcaEditado == "" || categoriaEditado == "") {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'INGRESA DATOS VALIDOS',
-        })
-        return;
+      const nEditado = document.getElementById('swal-input1').value;
+      const mEditado = document.getElementById('swal-input2').value;
+      const cEditado = document.getElementById('swal-input3').value;
+      const pEditado = document.getElementById('swal-input4').value;
+      
+      if (!nEditado || !mEditado || !cEditado || !pEditado || isNaN(pEditado) ) {
+        Swal.showValidationMessage('Por favor, ingresa información valida');
       }
-      return [
-        productoEditado = new Producto(id, nombreEditado, marcaEditado, categoriaEditado, imagen, precioEditado)
-      ]
-
+      return [nEditado, mEditado, cEditado, pEditado];
     }
-  })
-  inventario[indexEnInventario] = productoEditado;
-  mostrarProductos(inventario)
-  guardarProductos();
-  Swal.fire("Cambios cargados exitosamente");
+  });
+
+  if (formValues) {
+    let productoEditado = new Producto(inventario[idInventario].id, formValues[0], formValues[1], formValues[2], inventario[idInventario].imagen, formValues[3])
+    inventario[idInventario] = productoEditado;
+    mostrarProductos(inventario)
+  }
 }
 
-// Creo funcion que identifica la pagina html en la que estamos posicionados y filtra el inventario segun la pagina.
+// Creo funcion que identifica la pagina html en la que estamos posicionados y filtra el inventario segun la pagina, tambien ocultamos los botones agregar y buscar.
 let paginaHtml = window.location.pathname.split('/').pop();
-if (paginaHtml != "index.html"){
-  buscar = document.getElementById("containerBuscar")
+if (paginaHtml !== "index.html"){
+  let buscar = document.getElementById("containerBuscar");
   buscar.style.display = "none";
+  let agregar = document.getElementById("agregar");
+  agregar.style.display = "none";
 }
 switch (paginaHtml) {
   case "hombre.html":
@@ -259,7 +253,7 @@ switch (paginaHtml) {
       nuevaruta= "." + elemento.imagen
       elemento.imagen = nuevaruta
     });
-    mostrarProductos(Hombres);
+    mostrarHTML(Hombres);
     break;
   case "mujer.html":
     const Mujeres = inventario.filter(elemento => elemento.categoria.toUpperCase() === "MUJER")
@@ -267,7 +261,7 @@ switch (paginaHtml) {
       nuevaruta= "." + elemento.imagen
       elemento.imagen = nuevaruta
     });
-    mostrarProductos(Mujeres);
+    mostrarHTML(Mujeres);
     break;
   case "accesorios.html":
     const Accesorios = inventario.filter(elemento => elemento.categoria.toUpperCase() === "ACCESORIO")
@@ -275,6 +269,29 @@ switch (paginaHtml) {
       nuevaruta= "." + elemento.imagen
       elemento.imagen = nuevaruta
     });
-    mostrarProductos(Accesorios);
+    mostrarHTML(Accesorios);
     break;
+}
+
+
+/* Creo funcion que muestra las paginas HTML secundarias (hombre,mujer,accesorios) sin mostrar los botones delete y edit*/
+function mostrarHTML(data) {
+  let productos = document.querySelector("#productos");
+  productos.innerHTML = "";
+  let tablaInventario = document.querySelector("#tablaInventario");
+  tablaInventario.innerHTML = "";
+  data.forEach(elemento => {
+    const producto = document.createElement("div")
+    producto.innerHTML =
+      `<div class="productos__card">
+        <img src=${elemento.imagen} class="productos__card__image" alt="${elemento.nombre}">
+        <div class="productos__card__descripcion">
+            <div class="productos__card__descripcion__brand"> ID: ${elemento.id}</div>
+            <div class="productos__card__descripcion__brand"> ${elemento.marca}</div>
+            <p class="productos__card__descripcion__name"> ${elemento.nombre}</p>
+            <p class="productos__card__descripcion__price"> $ ${elemento.precio} </p>
+        </div>
+        </div>`
+    productos.appendChild(producto)
+  });
 }
